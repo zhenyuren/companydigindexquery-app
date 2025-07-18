@@ -7,7 +7,7 @@ def main():
     
     # 读取CSV文件
     # 将这行代码：
-    df = pd.read_csv("C:/Users/Administrator/Desktop/test/含公司股票代码名称等.csv")
+    #df = pd.read_csv("C:/Users/Administrator/Desktop/test/含公司股票代码名称等.csv")
     
     # 修改为：
     df = pd.read_csv("含公司股票代码名称等.csv")
