@@ -6,7 +6,11 @@ def main():
     st.title('上市公司数字化转型指数查询')
     
     # 读取CSV文件
+    # 将这行代码：
     df = pd.read_csv("C:/Users/Administrator/Desktop/test/含公司股票代码名称等.csv")
+    
+    # 修改为：
+    df = pd.read_csv("含公司股票代码名称等.csv")
     
     # 确保股票代码列是字符串类型
     if '股票代码' in df.columns:
