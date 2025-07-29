@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 pandas>=1.0.0
 streamlit>=1.0.0
 qrcode>=1.0.0
+=======
+pandas==2.3.0
+streamlit==1.45.1
+>>>>>>> ffa28071ae86ce58004299711385cb97f200caa0
