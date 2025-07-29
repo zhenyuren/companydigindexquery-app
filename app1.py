@@ -91,7 +91,7 @@ def main():
         )
         qr.add_data(url)
         qr.make(fit=True)
-        img = qrcode.make_image(fill_color="black", back_color="white")  # 注意这里是qr.make_image()而非qrcode.make_image()
+        img = qr.make_image(fill_color="black", back_color="white")  # 注意这里是qr.make_image()而非qrcode.make_image()
         buf = BytesIO()
         img.save(buf, format="PNG")
         return buf.getvalue()
