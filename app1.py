@@ -113,9 +113,12 @@ def generate_qr_code(url):
     img.save(buf, format="PNG")
     return buf.getvalue()
 
+import os
+
 # 添加应用访问二维码
-st.markdown("### 📱 移动端访问")
-st.write("扫描下方二维码访问应用：")
-app_url = "https://companydigindexquery-app-eqsmbnfht2xbqupfkqttsv.streamlit.app/"  # 移除了反引号
-qr_image = generate_qr_code(app_url)
-st.image(qr_image, caption=f"应用二维码 (URL: {app_url})")
+if os.environ.get('STREAMLIT_ENV') == 'development':
+    st.markdown("### 📱 移动端访问（开发环境）")
+    st.write("扫描下方二维码访问应用：")
+    app_url = "https://companydigindexquery-app-eqsmbnfht2xbqupfkqttsv.streamlit.app/"
+    qr_image = generate_qr_code(app_url)
+    st.image(qr_image, caption=f"应用二维码 (URL: {app_url})")
