@@ -108,17 +108,14 @@ def generate_qr_code(url):
     )
     qr.add_data(url)
     qr.make(fit=True)
-    img = qr.make_image(fill_color="black", back_color="white")
+    img = qr.make_image(fill_color="black", back_color="white")  # 注意这里是qr.make_image()而非qrcode.make_image()
     buf = BytesIO()
     img.save(buf, format="PNG")
     return buf.getvalue()
 
-import os
-
 # 添加应用访问二维码
-if os.environ.get('STREAMLIT_ENV') == 'development':
-    st.markdown("### 📱 移动端访问（开发环境）")
-    st.write("扫描下方二维码访问应用：")
-    app_url = "https://companydigindexquery-app-eqsmbnfht2xbqupfkqttsv.streamlit.app/"
-    qr_image = generate_qr_code(app_url)
-    st.image(qr_image, caption=f"应用二维码 (URL: {app_url})")
+st.markdown("### 📱 移动端访问")
+st.write("扫描下方二维码访问应用：")
+app_url = "https://companydigindexquery-app-eqsmbnfht2xbqupfkqttsv.streamlit.app/"  # 替换为您的实际URL
+qr_image = generate_qr_code(app_url)
+st.image(qr_image, caption=f"应用二维码 (URL: {app_url})")
