@@ -75,5 +75,31 @@ def main():
         if st.button('查询历史记录'):
             select_code(selected_code)  # 复用回调函数
 
+    # 页面底部信息
+    st.markdown("---")
+    st.caption("© 2025 上市公司数字化转型研究中心 | 数据仅供参考")
+    
+    # 新增二维码生成功能
+    def generate_qr_code(url):
+        qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_H,
+            box_size=10,
+            border=4,
+        )
+        qr.add_data(url)
+        qr.make(fit=True)
+        img = qr.make_image(fill_color="black", back_color="white")  # 注意这里是qr.make_image()而非qrcode.make_image()
+        buf = BytesIO()
+        img.save(buf, format="PNG")
+        return buf.getvalue()
+    
+    # 添加应用访问二维码
+    st.markdown("### 📱 移动端访问")
+    st.write("扫描下方二维码访问应用：")
+    app_url = "https://zhenyuappwork.streamlit.app/"  # 替换为您的实际URL
+    qr_image = generate_qr_code(app_url)
+    st.image(qr_image, caption=f"应用二维码 (URL: {app_url})")
+
 if __name__ == '__main__':
     main()
