@@ -63,7 +63,11 @@ def main():
     # 显示当前结果（如果有）
     if 'current_result' in st.session_state and st.session_state.current_result is not None:
         st.write("查询结果:")
-        st.write(st.session_state.current_result)
+        # 保留两位小数
+        result_df = st.session_state.current_result.copy()
+        if '数字化转型指数' in result_df.columns:
+            result_df['数字化转型指数'] = result_df['数字化转型指数'].round(2)
+        st.write(result_df)
     elif 'current_result' in st.session_state and st.session_state.current_result is None:
         st.warning('未找到该股票代码对应的记录')
 
