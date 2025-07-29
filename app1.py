@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 import random
+import qrcode
+from io import BytesIO
 
 def main():
     st.title('上市公司数字化转型指数查询')
@@ -89,7 +91,7 @@ def main():
         )
         qr.add_data(url)
         qr.make(fit=True)
-        img = qr.make_image(fill_color="black", back_color="white")  # 注意这里是qr.make_image()而非qrcode.make_image()
+        img = qrcode.make_image(fill_color="black", back_color="white")  # 注意这里是qr.make_image()而非qrcode.make_image()
         buf = BytesIO()
         img.save(buf, format="PNG")
         return buf.getvalue()
