@@ -63,11 +63,15 @@ def main():
     # 显示当前结果（如果有）
     if 'current_result' in st.session_state and st.session_state.current_result is not None:
         st.write("查询结果:")
-        # 保留两位小数
+        # 强制转换为数值类型并保留两位小数
         result_df = st.session_state.current_result.copy()
         if '数字化转型指数' in result_df.columns:
-            result_df['数字化转型指数'] = result_df['数字化转型指数'].round(2)
-        st.write(result_df)
+            # 先转换为数值类型，再保留两位小数
+            result_df['数字化转型指数'] = pd.to_numeric(result_df['数字化转型指数'], errors='coerce').round(2)
+        # 使用st.dataframe并指定显示格式
+        st.dataframe(result_df.style.format({
+            '数字化转型指数': '{:.2f}'  # 显式指定两位小数格式
+        }))
     elif 'current_result' in st.session_state and st.session_state.current_result is None:
         st.warning('未找到该股票代码对应的记录')
 
