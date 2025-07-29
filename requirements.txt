@@ -1,4 +1,8 @@
-<<<<<<< HEAD
+streamlit>=1.35.0
+pandas>=2.2.0
+openpyxl>=3.1.2
+qrcode>=7.4.2
+pillow>=10.2.0
 pandas>=1.0.0
 streamlit>=1.0.0
 qrcode>=1.0.0
