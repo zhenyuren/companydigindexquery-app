@@ -1,6 +1,7 @@
+# 使用更稳定、更轻量的依赖版本
 streamlit==1.45.1
-pandas==2.3.0
-openpyxl>=3.1.2
-qrcode>=7.4.2
-pillow>=10.2.0
-xlrd>=2.0.1
+pandas>=2.0.0,<2.3.0  # 避免使用最新版本，选择更稳定的范围
+openpyxl>=3.1.0
+qrcode>=7.3.1
+pillow>=9.0.0
+xlrd>=2.0.0
